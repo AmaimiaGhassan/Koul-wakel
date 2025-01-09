@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Workoutplan{% endblock %}
+{% block pagetitle %}<h2>New <em>WorkoutPlan</em></h2>{% endblock %}
+{% block pagedescription %}
+    <p>Fuel your fitness  with personalized workout plans tailored to your goals and fitness level. Whether you're aiming to build strength, improve endurance, or stay active, our workout plans provide structured routines to keep you motivated. Achieve your milestones with exercises designed to maximize results and keep you energized every step of the way.</p>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-6 mx-auto">
+            {{ include('workoutplan/_form.html.twig') }}
+
+            <a href="{{ path('app_workoutplan_index') }}" class="btn btn-outline-dark w-100 my-1">back to list</a>
+        </div>
+    </div>
+{% endblock %}

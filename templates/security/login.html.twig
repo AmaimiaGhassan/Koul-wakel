@@ -1,0 +1,35 @@
+{% extends 'index-login.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+{% block pagetitle %}<h2>Welc<em>ome</em></h2>{% endblock %}
+{% block pagedescription %}<p>Please sign in</p>{% endblock %}
+
+{% block login %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <label for="inputUsername " style="color: white;">Username</label>
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control w-100 align-content-md-center" autocomplete="username" required autofocus>
+        <label for="inputPassword" style="color: white;">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control align-content-xl-center " autocomplete="current-password" >
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        <div class="checkbox mb-3" style="color: white;">
+            <label>
+                <input type="checkbox" name="_remember_me" > Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign in</button>
+    </form>
+{% endblock %}

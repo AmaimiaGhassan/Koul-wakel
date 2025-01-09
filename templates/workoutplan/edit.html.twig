@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Workoutplan{% endblock %}
+{% block pagetitle %}<h2>Edit <em>WorkoutPlan</em></h2>{% endblock %}
+{% block pagedescription %}
+    <p>Refine your fitness journey  ease! Update your workout plans to match your evolving goals and preferences. Keep having FUN!</p>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-6 mx-auto">
+                {{ include('workoutplan/_form.html.twig', {'button_label': 'Update'}) }}
+
+                {{ include('workoutplan/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Workoutplan index{% endblock %}
+{% block pagetitle %}<h2>Workout <em>Plan</em></h2>{% endblock %}
+{% block pagedescription %}<p> Discover all your workout plans in one place! Whether you're aiming to build strength, improve endurance, or achieve overall fitness, our platform provides personalized routines tailored to your goals. Stay organized, track your progress, and unlock your full potential with easy access to all your training programs.</p>{% endblock %}
+{% block body %}
+    <table class="schedule-table filtering text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Plan_name</th>
+                <th>Description</th>
+                <th>Duration par </th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for workoutplan in workoutplans %}
+            <tr>
+                <td>{{ workoutplan.id }}</td>
+                <td>{{ workoutplan.planName }}</td>
+                <td>{{ workoutplan.description }}</td>
+                <td>{{ workoutplan.duration }}</td>
+                <td>
+                    <a href="{{ path('app_workoutplan_show', {'id': workoutplan.id}) }}">show</a>
+                    <a href="{{ path('app_workoutplan_edit', {'id': workoutplan.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a href="{{ path('app_workoutplan_new') }}" class="btn btn-outline-success  w-100 " >Create new</a>
+{% endblock %}

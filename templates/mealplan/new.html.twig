@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Mealplan{% endblock %}
+{% block pagetitle %}<h2>New <em>MealPlan</em></h2>{% endblock %}
+{% block pagedescription %}<p>Fuel your fitness journey with customized meal plans designed to meet your unique nutritional needs. From balanced diets to specific goals like muscle gain or weight loss, our meal plans ensure you get the right mix of nutrients. Stay on track with delicious, easy-to-follow recipes that keep you energized and motivated every step of the way</p>{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-6 mx-auto">
+            {{ include('mealplan/_form.html.twig') }}
+
+            <a href="{{ path('app_mealplan_index') }}" class="btn btn-outline-dark w-100 my-1">back to list</a>
+        </div>
+    </div>
+{% endblock %}

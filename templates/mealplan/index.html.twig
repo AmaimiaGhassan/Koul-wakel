@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mealplan index{% endblock %}
+{% block pagetitle %}<h2>Meal <em>Plan</em></h2>{% endblock %}
+{% block pagedescription %}<p>Fuel your fitness journey with customized meal plans designed to meet your unique nutritional needs. From balanced diets to specific goals like muscle gain or weight loss, our meal plans ensure you get the right mix of nutrients. Stay on track with delicious, easy-to-follow recipes that keep you energized and motivated every step of the way</p>{% endblock %}
+{% block body %}
+
+    <table class="schedule-table filtering text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Calories_per_day</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mealplan in mealplans %}
+            <tr>
+                <td>{{ mealplan.id }}</td>
+                <td>{{ mealplan.name }}</td>
+                <td>{{ mealplan.description }}</td>
+                <td>{{ mealplan.caloriesPerDay }}</td>
+                <td>
+                    {% if mealplan.photoFilename %}
+                        <img src="{{ asset('uploads/' ~ mealplan.photoFilename) }}" alt="mealplan photoFilename" style="max-width: 100px; max-height: 100px;">
+                    {% else %}
+                        No image
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_mealplan_show', {'id': mealplan.id}) }}">show</a>
+                    <a href="{{ path('app_mealplan_edit', {'id': mealplan.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mealplan_new') }}" class="btn btn-outline-success w-100 my-1">Create new</a>
+{% endblock %}

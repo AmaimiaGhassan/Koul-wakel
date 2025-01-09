@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Mealplan{% endblock %}
+{% block pagetitle %}<h2>Edit <em>MealPlan</em></h2>{% endblock %}
+{% block pagedescription %}
+    <p>Elevate your nutrition journey with ease! Update your meal plans to align with your dietary goals and preferences. Enjoy delicious, healthy options while staying on track and feeling your best!</p>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-6 mx-auto">
+            {{ include('mealplan/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a href="{{ path('app_mealplan_index') }}" class="btn btn-outline-dark w-100 my-1">back to list</a>
+
+            {{ include('mealplan/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
